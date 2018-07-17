@@ -1,0 +1,1 @@
+Search.setIndex({docnames:["index"],envversion:53,filenames:["index.rst"],objects:{},objnames:{},objtypes:{},terms:{},titles:["Think Like A Computer Scientist (Python Edition)"],titleterms:{comput:0,edit:0,like:0,python:0,scientist:0,think:0}})
