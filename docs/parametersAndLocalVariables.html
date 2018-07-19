@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>5.3 Parameters and Local Variables &#8212; Think Like A Computer Scientist (Python Edition)  documentation</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/launchcode.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5.1 Functions" href="quizes.html" />
+    <link rel="prev" title="5.2 Functions That Return Values" href="functionsThatReturnValues.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/lc-logo.svg"></span>
+          ThinkCsPy</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Pages <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="functions.html">5.1 Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionsThatReturnValues.html">5.2 Functions That Return Values</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5.3 Parameters and Local Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quizes.html">5.1 Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quizes.html#functions-that-return-values">5.2 Functions That Return values</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">5.3 Parameters and Local Variables</a></li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="parameters-and-local-variables">
+<h1>5.3 Parameters and Local Variables<a class="headerlink" href="#parameters-and-local-variables" title="Permalink to this headline">¶</a></h1>
+<p>An assignment statement in a function creates a <strong>local variable</strong> for the variable on the left hand side of the assignment operator. It is called local because this variable only exists inside the function and you cannot use it outside of it. For example, consider again the <code class="docutils literal notranslate"><span class="pre">square</span></code> function:</p>
+<p>If you press the “last &gt;&gt;” button you will see an error message. When we try to use <code class="docutils literal notranslate"><span class="pre">y</span></code> on line 6 (outside the function) Python looks for a global variable named <code class="docutils literal notranslate"><span class="pre">y</span></code> but does not find one. This results in the error: <code class="docutils literal notranslate"><span class="pre">NameError:</span> <span class="pre">'y'</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">defined.</span></code></p>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">y</span></code> only exists while the function is being executed — we call this its <strong>lifetime</strong>. When the execution of the function terminates (returns), the local variables are destroyed. Codelens helps you  visualize this because the local variables disappear after the function returns. Go back and step through the statements paying particular attention to the variables that are created when the function is called. Note when they are subsequently destroyed as the function returns.</p>
+<p>Formal parameters are also local and act like local variables. For example, the lifetime of <code class="docutils literal notranslate"><span class="pre">x</span></code> begins when <code class="docutils literal notranslate"><span class="pre">square</span></code> is called, and its lifetime ends when the function completes its execution.</p>
+<p>So it is not possible for a function to set some local variable to a value, complete its execution, and then when it is called again next time, recover the local variable. Each call of the function creates new local variables, and their lifetimes expire when the function returns to the caller.</p>
+<p>On the other hand, it is legal for a function to access a global variable. However, this is considered <strong>bad form</strong> by nearly all programmers and should be avoided. Look at the following variation on the <code class="docutils literal notranslate"><span class="pre">square</span></code> function.</p>
+<p>Although the <code class="docutils literal notranslate"><span class="pre">bad_square</span></code> function works, it is poorly written. We have done it here to illustrate an important rule about how variables are looked up in Python. First, Python looks at the variables that are defined as local variables in the function. We call this the <strong>local scope</strong>.  If the variable name is not found in the local scope, then Python looks at the global variables, or <strong>global scope</strong>.  This is exactly the case illustrated in the code above. While <code class="docutils literal notranslate"><span class="pre">power</span></code> is not found locally in <code class="docutils literal notranslate"><span class="pre">bad_square</span></code>, it does exist globally and therefore can be used in the function. But the appropriate way to write this function would be to pass <code class="docutils literal notranslate"><span class="pre">power</span></code> as an argument to the <code class="docutils literal notranslate"><span class="pre">square</span></code> function. For practice, you should rewrite the <code class="docutils literal notranslate"><span class="pre">bad_square</span></code> example to have a second parameter called <code class="docutils literal notranslate"><span class="pre">power</span></code>.</p>
+<p>There is another important aspect of local versus global variables: <em>assignment statements in the local function cannot change variables defined outside the function</em>. Consider the following codelens example:</p>
+<p>Now step through the code. What do you notice about the values of variable <code class="docutils literal notranslate"><span class="pre">power</span></code> in the local scope compared to the variable <code class="docutils literal notranslate"><span class="pre">power</span></code> in the global scope?</p>
+<p>The value of <code class="docutils literal notranslate"><span class="pre">power</span></code> in the local scope was different than the global scope. That is because in this example <code class="docutils literal notranslate"><span class="pre">power</span></code> was used on the left hand side of the assignment statement <code class="docutils literal notranslate"><span class="pre">power</span> <span class="pre">=</span> <span class="pre">p</span></code>.  When a variable name is used on the left hand side of an assignment statement Python creates a local variable. When a local variable has the same name as a global variable we say that the local shadows the global. A <strong>shadow</strong> means that the global variable cannot be accessed by Python because the local variable will be found first. This is another good reason not to use global variables. As you can see, it makes your code confusing and difficult to understand.</p>
+<p>To cement all of these ideas even further let’s look at one final example. Inside the <code class="docutils literal notranslate"><span class="pre">square</span></code> function we are going to make an assignment to the parameter <code class="docutils literal notranslate"><span class="pre">x</span></code>  There’s no good reason to do this other than to emphasize the fact that the parameter <code class="docutils literal notranslate"><span class="pre">x</span></code> is a local variable. If you step through the example in codelens you will see that although <code class="docutils literal notranslate"><span class="pre">x</span></code> is 0 in the local variable for <code class="docutils literal notranslate"><span class="pre">square</span></code>, the <code class="docutils literal notranslate"><span class="pre">x</span></code> in the global scope remains 2. This is confusing to many beginning programmers who think that an assignment to a formal parameter will cause a change to the value of the variable that was used as the actual parameter (the argument), especially when the two share the same name. But this example demonstrates that Python clearly does not operate that way.</p>
+<p><strong>Check your understanding</strong></p>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2018, LaunchCode.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

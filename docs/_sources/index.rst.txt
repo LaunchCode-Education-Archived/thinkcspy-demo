@@ -6,6 +6,7 @@ Think Like A Computer Scientist (Python Edition)
 
    functions
    functionsThatReturnValues
+   parametersAndLocalVariables
    quizes
 
 .. raw:: html
