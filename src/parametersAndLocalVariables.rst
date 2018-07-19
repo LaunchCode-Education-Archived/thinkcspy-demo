@@ -12,16 +12,12 @@
 
 An assignment statement in a function creates a **local variable** for the variable on the left hand side of the assignment operator. It is called local because this variable only exists inside the function and you cannot use it outside of it. For example, consider again the ``square`` function:
 
-.. codelens:: bad_local
-    :python: py3
+    .. raw:: html
 
-    def square(x):
-        y = x * x
-        return y
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-53a?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-    z = square(10)
-    print(y)
-
+    .. raw:: html
+        <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def%20square%28x%29%3A%0A%20%20%20%20y%20%3D%20x%20*%20x%0A%20%20%20%20return%20y%0A%0Az%20%3D%20square%2810%29%0Aprint%28y%29%0A&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 If you press the "last >>" button you will see an error message. When we try to use ``y`` on line 6 (outside the function) Python looks for a global variable named ``y`` but does not find one. This results in the error: ``NameError: 'y' is not defined.``
 
@@ -33,32 +29,21 @@ So it is not possible for a function to set some local variable to a value, comp
 
 On the other hand, it is legal for a function to access a global variable. However, this is considered **bad form** by nearly all programmers and should be avoided. Look at the following variation on the ``square`` function.
 
-.. activecode:: badsquare_1
+    .. raw:: html
 
-    def bad_square(x):
-        y = x ** power
-        return y
-
-    power = 2
-    result = bad_square(10)
-    print(result)
-
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-53b?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 Although the ``bad_square`` function works, it is poorly written. We have done it here to illustrate an important rule about how variables are looked up in Python. First, Python looks at the variables that are defined as local variables in the function. We call this the **local scope**.  If the variable name is not found in the local scope, then Python looks at the global variables, or **global scope**.  This is exactly the case illustrated in the code above. While ``power`` is not found locally in ``bad_square``, it does exist globally and therefore can be used in the function. But the appropriate way to write this function would be to pass ``power`` as an argument to the ``square`` function. For practice, you should rewrite the ``bad_square`` example to have a second parameter called ``power``.
 
 There is another important aspect of local versus global variables: *assignment statements in the local function cannot change variables defined outside the function*. Consider the following codelens example:
 
-.. codelens::  cl_powerof_bad
-    :python: py3
+    .. raw:: html
 
-    def power_of(x, p):
-        power = p   # Another dumb mistake
-        y = x ** power
-        return y
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-53c?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-    power = 3
-    result = power_of(10, 2)
-    print(result)
+    .. raw:: html
+
+        <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def%20power_of%28x,%20p%29%3A%0A%20%20%20%20power%20%3D%20p%20%20%20%23%20Another%20dumb%20mistake%0A%20%20%20%20y%20%3D%20x%20**%20power%0A%20%20%20%20return%20y%0A%0Apower%20%3D%203%0Aresult%20%3D%20power_of%2810,%202%29%0Aprint%28result%29%0A&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 Now step through the code. What do you notice about the values of variable ``power`` in the local scope compared to the variable ``power`` in the global scope?
 
@@ -66,50 +51,15 @@ The value of ``power`` in the local scope was different than the global scope. T
 
 To cement all of these ideas even further let's look at one final example. Inside the ``square`` function we are going to make an assignment to the parameter ``x``  There's no good reason to do this other than to emphasize the fact that the parameter ``x`` is a local variable. If you step through the example in codelens you will see that although ``x`` is 0 in the local variable for ``square``, the ``x`` in the global scope remains 2. This is confusing to many beginning programmers who think that an assignment to a formal parameter will cause a change to the value of the variable that was used as the actual parameter (the argument), especially when the two share the same name. But this example demonstrates that Python clearly does not operate that way.
 
-.. codelens:: cl_change_parm
-    :python: py3
+    .. raw:: html
 
-    def square(x):
-        y = x * x
-        x = 0       # assign a new value to the parameter x
-        return y
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-53d?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-    x = 2
-    z = square(x)
-    print(z)
+    .. raw:: html
 
+        <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def%20square%28x%29%3A%0A%20%20%20%20y%20%3D%20x%20*%20x%0A%20%20%20%20x%20%3D%200%20%20%20%20%20%20%20%23%20assign%20a%20new%20value%20to%20the%20parameter%20x%0A%20%20%20%20return%20y%0A%0Ax%20%3D%202%0Az%20%3D%20square%28x%29%0Aprint%28z%29%0A&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=9&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 **Check your understanding**
 
-.. mchoice:: test_question5_3_1
-   :answer_a: Its value
-   :answer_b: The range of statements in the code where a variable can be accessed.
-   :answer_c: Its name
-   :correct: b
-   :feedback_a: Value is the contents of the variable. Scope concerns where the variable is &quot;known&quot;.
-   :feedback_b:
-   :feedback_c: The name of a variable is just an identifier. Scope concerns where the variable is &quot;known&quot;.
+See Canvas for review quizzes
 
-   What is a variable's scope?
-
-.. mchoice:: test_question5_3_2
-   :answer_a: A temporary variable that is only used inside a function
-   :answer_b: The same as a parameter
-   :answer_c: Another name for any variable
-   :correct: a
-   :feedback_a: Yes, a local variable is a temporary variable that is only known (only exists) in the function it is defined in.
-   :feedback_b: While parameters may be considered local variables, functions may also define and use additional local variables.
-   :feedback_c: Variables that are used outside a function are not local, but rather global variables.
-
-   What is a local variable?
-
-.. mchoice:: test_question5_3_3
-   :answer_a: Yes, and there is no reason not to.
-   :answer_b: Yes, but it is considered bad form.
-   :answer_c: No, it will cause an error.
-   :correct: b
-   :feedback_a: While there is no problem as far as Python is concerned, it is generally considered bad style because of the potential for the programmer to get confused.
-   :feedback_b: It is generally considered bad style because of the potential for the programmer to get confused. If you must use global variables (also generally bad form) make sure they have unique names.
-   :feedback_c: Python manages global and local scope separately and has clear rules for how to handle variables with the same name in different scopes, so this will not cause a Python error.
-
-   Can you use the same name for a local variable as a global variable?

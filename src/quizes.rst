@@ -164,3 +164,39 @@ This is just a page to hold all of the quizes while I rewrite the lesson pages. 
          print(x + y + z)
 
 .. index:: control flow, local variable, global variable, argument, parameter, return value, fruitful function, temporary variable
+
+5.3 Parameters and Local variables
+==================================
+
+.. mchoice:: test_question5_3_1
+   :answer_a: Its value
+   :answer_b: The range of statements in the code where a variable can be accessed.
+   :answer_c: Its name
+   :correct: b
+   :feedback_a: Value is the contents of the variable. Scope concerns where the variable is &quot;known&quot;.
+   :feedback_b:
+   :feedback_c: The name of a variable is just an identifier. Scope concerns where the variable is &quot;known&quot;.
+
+   What is a variable's scope?
+
+.. mchoice:: test_question5_3_2
+   :answer_a: A temporary variable that is only used inside a function
+   :answer_b: The same as a parameter
+   :answer_c: Another name for any variable
+   :correct: a
+   :feedback_a: Yes, a local variable is a temporary variable that is only known (only exists) in the function it is defined in.
+   :feedback_b: While parameters may be considered local variables, functions may also define and use additional local variables.
+   :feedback_c: Variables that are used outside a function are not local, but rather global variables.
+
+   What is a local variable?
+
+.. mchoice:: test_question5_3_3
+   :answer_a: Yes, and there is no reason not to.
+   :answer_b: Yes, but it is considered bad form.
+   :answer_c: No, it will cause an error.
+   :correct: b
+   :feedback_a: While there is no problem as far as Python is concerned, it is generally considered bad style because of the potential for the programmer to get confused.
+   :feedback_b: It is generally considered bad style because of the potential for the programmer to get confused. If you must use global variables (also generally bad form) make sure they have unique names.
+   :feedback_c: Python manages global and local scope separately and has clear rules for how to handle variables with the same name in different scopes, so this will not cause a Python error.
+
+   Can you use the same name for a local variable as a global variable?
