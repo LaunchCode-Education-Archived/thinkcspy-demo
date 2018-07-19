@@ -7,8 +7,8 @@
     the license is included in the section entitled "GNU Free Documentation
     License".
 
-The Accumulator Pattern
-=======================
+5.4 The Accumulator Pattern
+===========================
 
 In the previous example, we wrote a function that computes the square of a number. The algorithm we used in the function was simple: multiply the number by itself.
 
@@ -45,44 +45,4 @@ Here is the same program in codelens. Step through the function and watch ``runn
 
 **Check your understanding**
 
-.. mchoice:: test_question5_4_1
-   :answer_a: The square function will return x instead of x * x
-   :answer_b: The square function will cause an error
-   :answer_c: The square function will work as expected and return x * x
-   :answer_d: The square function will return 0 instead of x * x
-   :correct: a
-   :feedback_a: The variable running_total will be reset to 0 each time through the loop. However because this assignment happens as the first instruction, the next instruction in the loop will set it back to x. When the loop finishes, it will have the value x, which is what is returned.
-   :feedback_b: Assignment statements are perfectly legal inside loops and will not cause an error.
-   :feedback_c: By putting the statement that sets running_total to 0 inside the loop, that statement gets executed every time through the loop, instead of once before the loop begins. The result is that running_total is "cleared" (reset to 0) each time through the loop.
-   :feedback_d: The line running_total = 0 is the first line in the for loop, but immediately after this line, the line running_total = running_total + x will execute, giving running_total a non-zero value  (assuming x is non-zero).
-
-   Consider the following code:
-
-   .. code-block:: python
-
-     def square(x):
-         running_total = 0
-         for counter in range(x):
-             running_total = running_total + x
-         return running_total
-
-   What happens if you put the initialization of running_total (the
-   line running_total = 0) inside the for loop as the first
-   instruction in the loop?
-
-
-.. parsonsprob:: question5_4_1p
-
-   Rearrange the code statements so that the program will add up the first n odd numbers, starting from 1, where n is provided by the user.
-   -----
-   n = int(input('How many odd numbers would
-   you like to add together?'))
-   sum = 0
-   odd_number = 1
-   =====
-   for counter in range(n):
-   =====
-      sum = sum + odd_number
-      odd_number = odd_number + 2
-   =====
-   print(sum)
+See Canvas for review quizzes
