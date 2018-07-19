@@ -7,8 +7,8 @@
     the license is included in the section entitled "GNU Free Documentation
     License".
 
-Functions
-=========
+5.1 Functions
+=============
 
 In Python, a **function** is a named sequence of statements that belong together. 
 Their primary purpose is to help us organize programs into chunks that match how we think about the solution to the problem.
