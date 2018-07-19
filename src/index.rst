@@ -7,6 +7,7 @@ Think Like A Computer Scientist (Python Edition)
    functions
    functionsThatReturnValues
    parametersAndLocalVariables
+   theAccumulatorPattern
    quizes
 
 .. raw:: html
