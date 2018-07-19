@@ -7,14 +7,8 @@
     the license is included in the section entitled "GNU Free Documentation
     License".
 
-.. qnum::
-   :prefix: func-4-
-   :start: 1
-
-.. index:: accumulator pattern, variable
-
 The Accumulator Pattern
------------------------
+=======================
 
 In the previous example, we wrote a function that computes the square of a number. The algorithm we used in the function was simple: multiply the number by itself.
 
@@ -28,19 +22,9 @@ Let's put it another way. To square the value of ``n``, we will repeat the proce
 
 Here is the program in activecode. Note that the function definition is the same as it was before. All that has changed is the implementation details, i.e., how the squaring is done. This is a great example of "black box" design. We can change out the details inside of the box and still use the function exactly as we did before.
 
-.. activecode:: sq_accum1
+    .. raw:: html
 
-    def square(x):
-        running_total = 0          # initialize the accumulator!
-        for counter in range(x):
-            running_total = running_total + x
-
-        return running_total
-
-    num = 10
-    result = square(num)
-    print("The result of", num, "squared is", result)
-
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-54a?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 In the program above, notice that the variable ``running_total`` starts out with a value of 0. Then the iteration is performed ``x`` times. Inside the ``for`` loop, with each iteration, the update occurs: ``running_total`` is reassigned a new value which is the old value plus the value of ``x``.
 
@@ -55,20 +39,9 @@ This pattern of iterating the updating of a variable is commonly referred to as 
 
 Here is the same program in codelens. Step through the function and watch ``running_total`` accumulate the result.
 
-.. codelens:: sq_accum3
-    :python: py3
+    .. raw:: html
 
-    def square(x):
-        running_total = 0
-        for counter in range(x):
-            running_total = running_total + x
-
-        return running_total
-
-    num = 10
-    result = square(num)
-    print("The result of", num, "squared is", result)
-
+        <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def%20square%28x%29%3A%0A%20%20%20%20running_total%20%3D%200%20%20%20%20%20%20%20%20%20%20%23%20initialize%20the%20accumulator!%0A%20%20%20%20for%20counter%20in%20range%28x%29%3A%0A%20%20%20%20%20%20%20%20running_total%20%3D%20running_total%20%2B%20x%0A%0A%20%20%20%20return%20running_total%0A%0Anum%20%3D%2010%0Aresult%20%3D%20square%28num%29%0Aprint%28%22The%20result%20of%22,%20num,%20%22squared%20is%22,%20result%29%0A&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 **Check your understanding**
 
