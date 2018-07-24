@@ -9,6 +9,7 @@ Think Like A Computer Scientist (Python Edition)
    parametersAndLocalVariables
    theAccumulatorPattern
    functionsCanCallOtherFunctions
+   exercises
    quizes
 
 .. raw:: html
