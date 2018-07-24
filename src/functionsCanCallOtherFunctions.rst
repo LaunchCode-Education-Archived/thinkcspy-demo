@@ -7,68 +7,24 @@
     the license is included in the section entitled "GNU Free Documentation
     License".
 
-.. qnum::
-   :prefix: func-5-
-   :start: 1
-
-.. index:: functional decomposition, generalization, abstraction
-
-Functions Can Call Other Functions
-----------------------------------
+5.5 Functions Can Call Other Functions
+======================================
 
 It is important to understand that each of the functions we write can be used and called from other functions we write. This is one of the most important ways that computer scientists take a large problem and break it down into a group of smaller problems. This process of breaking a problem into smaller subproblems is called **functional decomposition**.
 
 Here's a simple example of functional decomposition using two functions. The first function called ``square`` simply computes the square of a given number. The second function called ``sum_of_squares`` makes use of ``square`` to compute the sum of three numbers that have been squared.
 
-.. activecode:: sumofsquares
+    .. raw:: html
 
-    def square(i):
-        j = i * i
-        return j
-
-    def sum_of_squares(x, y, z):
-        a = square(x)
-        b = square(y)
-        c = square(z)
-
-        return a + b + c
-
-    num_1 = -5
-    num_2 = 2
-    num_3 = 10
-    result = sum_of_squares(num_1, num_2, num_3)
-    print(result)
-
-    num_4 = -2
-    num_5 = 7
-    num_6 = 9
-    result_2 = sum_of_squares(num_4, num_5, num_6)
-    print(result_2)
-
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-55a?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 Even though this is a simple demonstration, this example illustrates a couple of important Python concepts, like code reusability, along with using arguments. You can see why functions are useful by looking at how we are able to do the same thing (sum the squares) in 2 different instances to get 2 different results, but we only have to write the code that will perform the calculations once. Because we have that code in functions, we can reuse it by calling the functions with different arguments.
 
 Now let's change this example slightly to demonstrate scope by using local and global variables that have the same name.
 
-.. codelens:: sumofsquares2
+    .. raw:: html
 
-    def square(x):
-        y = x * x
-        return y
-
-    def sum_of_squares(x, y, z):
-        a = square(x)
-        b = square(y)
-        c = square(z)
-
-        return a + b + c
-
-    a = -5
-    b = 2
-    c = 10
-    result = sum_of_squares(a, b, c)
-    print(result)
-
+        <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def%20square%28x%29%3A%0A%20%20%20%20y%20%3D%20x%20*%20x%0A%20%20%20%20return%20y%0A%20%20%20%20%0Adef%20sum_of_squares%28x,%20y,%20z%29%3A%0A%20%20%20%20a%20%3D%20square%28x%29%0A%20%20%20%20b%20%3D%20square%28y%29%0A%20%20%20%20c%20%3D%20square%28z%29%0A%20%20%20%20%0A%20%20%20%20return%20a%20%2B%20b%20%2B%20c%0A%20%20%20%20%0Aa%20%3D%20-5%0Ab%20%3D%202%0Ac%20%3D%2010%0Aresult%20%3D%20sum_of_squares%28a,%20b,%20c%29%0Aprint%28result%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 Note that when you step through this example, codelens bolds line 1 and line 5 as the functions are defined. The body of ``square`` is not executed until it is called from the ``sum_of_squares`` function for the first time on line 6. Also notice that when ``square`` is called there are two groups of local variables, one for ``square`` and one for ``sum_of_squares``. As you step through you will notice that ``x`` and ``y`` are local variables in both functions and may even have different values. This illustrates that even though they are named the same, they are distinct. And you can see the same thing is true about the variables ``a``, ``b``, and ``c`` --- the ones that are in the function ``sum_of_squares`` are different from the ones at the bottom of the program, outside the function definition.
 
@@ -100,31 +56,9 @@ But now we might recall how a square relates to a rectangle; it is just a specia
 
 Here is the entire example with the necessary set up code.
 
-.. activecode:: ch04_3
-    :nocodelens:
+    .. raw:: html
 
-    import turtle
-
-    def draw_rectangle(t, w, h):
-        """Get turtle t to draw a rectangle of width w and height h."""
-        for i in range(2):
-            t.forward(w)
-            t.left(90)
-            t.forward(h)
-            t.left(90)
-
-    def draw_square(t, sz):        # a new version of draw_square
-        draw_rectangle(t, sz, sz)
-
-    wn = turtle.Screen()             # Set up the window
-    wn.bgcolor("lightgreen")
-
-    tess = turtle.Turtle()           # create tess
-
-    draw_square(tess, 50)
-
-    wn.exitonclick()
-
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-55b?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 Some points worth noting here:
 

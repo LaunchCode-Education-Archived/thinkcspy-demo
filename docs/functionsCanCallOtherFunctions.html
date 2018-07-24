@@ -4,7 +4,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Functions Can Call Other Functions &#8212; Think Like A Computer Scientist (Python Edition)  documentation</title>
+    <title>5.5 Functions Can Call Other Functions &#8212; Think Like A Computer Scientist (Python Edition)  documentation</title>
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/css/launchcode.css" type="text/css" />
@@ -58,7 +58,7 @@
 <li class="toctree-l1"><a class="reference internal" href="functionsThatReturnValues.html">5.2 Functions That Return Values</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parametersAndLocalVariables.html">5.3 Parameters and Local Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="theAccumulatorPattern.html">5.4 The Accumulator Pattern</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Functions Can Call Other Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5.5 Functions Can Call Other Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quizes.html">5.1 Functions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quizes.html#functions-that-return-values">5.2 Functions That Return values</a></li>
 <li class="toctree-l1"><a class="reference internal" href="quizes.html#parameters-and-local-variables">5.3 Parameters and Local variables</a></li>
@@ -91,7 +91,7 @@
   <div class="row">
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
-<li><a class="reference internal" href="#">Functions Can Call Other Functions</a></li>
+<li><a class="reference internal" href="#">5.5 Functions Can Call Other Functions</a></li>
 </ul>
 
         </div>
@@ -99,11 +99,15 @@
     <div class="col-md-9 content">
       
   <div class="section" id="functions-can-call-other-functions">
-<span id="index-0"></span><h1>Functions Can Call Other Functions<a class="headerlink" href="#functions-can-call-other-functions" title="Permalink to this headline">¶</a></h1>
+<h1>5.5 Functions Can Call Other Functions<a class="headerlink" href="#functions-can-call-other-functions" title="Permalink to this headline">¶</a></h1>
 <p>It is important to understand that each of the functions we write can be used and called from other functions we write. This is one of the most important ways that computer scientists take a large problem and break it down into a group of smaller problems. This process of breaking a problem into smaller subproblems is called <strong>functional decomposition</strong>.</p>
 <p>Here’s a simple example of functional decomposition using two functions. The first function called <code class="docutils literal notranslate"><span class="pre">square</span></code> simply computes the square of a given number. The second function called <code class="docutils literal notranslate"><span class="pre">sum_of_squares</span></code> makes use of <code class="docutils literal notranslate"><span class="pre">square</span></code> to compute the sum of three numbers that have been squared.</p>
+<blockquote>
+<div><iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-55a?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe></div></blockquote>
 <p>Even though this is a simple demonstration, this example illustrates a couple of important Python concepts, like code reusability, along with using arguments. You can see why functions are useful by looking at how we are able to do the same thing (sum the squares) in 2 different instances to get 2 different results, but we only have to write the code that will perform the calculations once. Because we have that code in functions, we can reuse it by calling the functions with different arguments.</p>
 <p>Now let’s change this example slightly to demonstrate scope by using local and global variables that have the same name.</p>
+<blockquote>
+<div><iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def%20square%28x%29%3A%0A%20%20%20%20y%20%3D%20x%20*%20x%0A%20%20%20%20return%20y%0A%20%20%20%20%0Adef%20sum_of_squares%28x,%20y,%20z%29%3A%0A%20%20%20%20a%20%3D%20square%28x%29%0A%20%20%20%20b%20%3D%20square%28y%29%0A%20%20%20%20c%20%3D%20square%28z%29%0A%20%20%20%20%0A%20%20%20%20return%20a%20%2B%20b%20%2B%20c%0A%20%20%20%20%0Aa%20%3D%20-5%0Ab%20%3D%202%0Ac%20%3D%2010%0Aresult%20%3D%20sum_of_squares%28a,%20b,%20c%29%0Aprint%28result%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe></div></blockquote>
 <p>Note that when you step through this example, codelens bolds line 1 and line 5 as the functions are defined. The body of <code class="docutils literal notranslate"><span class="pre">square</span></code> is not executed until it is called from the <code class="docutils literal notranslate"><span class="pre">sum_of_squares</span></code> function for the first time on line 6. Also notice that when <code class="docutils literal notranslate"><span class="pre">square</span></code> is called there are two groups of local variables, one for <code class="docutils literal notranslate"><span class="pre">square</span></code> and one for <code class="docutils literal notranslate"><span class="pre">sum_of_squares</span></code>. As you step through you will notice that <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are local variables in both functions and may even have different values. This illustrates that even though they are named the same, they are distinct. And you can see the same thing is true about the variables <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, and <code class="docutils literal notranslate"><span class="pre">c</span></code> — the ones that are in the function <code class="docutils literal notranslate"><span class="pre">sum_of_squares</span></code> are different from the ones at the bottom of the program, outside the function definition.</p>
 <p>Now we will look at another example that uses two functions. This example illustrates an important computer science problem solving technique called <strong>generalization</strong>. Assume we want to write a function to draw a rectangle. The generalization step is to realize that a square is just a special kind of rectangle. Therefore, our approach to solving the problem of how to draw a rectangle can borrow from our solution to how to draw a square.</p>
 <p>To draw a rectangle we need to be able to call a function with different arguments for width and height. Unlike the case of the square, we cannot repeat the same argument four times, because the four sides are not equal in a rectangle that is not a square. However, it is the case that drawing the bottom and right sides follows the same sequence as drawing the top and left sides. So we eventually come up with this rather nice code that can draw a rectangle.</p>
@@ -124,6 +128,8 @@
 </pre></div>
 </div>
 <p>Here is the entire example with the necessary set up code.</p>
+<blockquote>
+<div><iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-55b?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe></div></blockquote>
 <p>Some points worth noting here:</p>
 <ul class="simple">
 <li>Functions can call other functions.</li>
