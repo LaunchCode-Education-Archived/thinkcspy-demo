@@ -107,36 +107,58 @@
       
   <div class="section" id="exercises">
 <h1>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h1>
-<div class="full-width docutils container">
-<ol class="arabic">
-<li></li>
+<ol class="arabic simple">
+<li>Use the <code class="docutils literal notranslate"><span class="pre">draw_square</span></code> function we wrote in this chapter to draw the image shown below. Assume each side is 20 units.</li>
+</ol>
+<p>(Hint: notice that the turtle has already moved away from the ending point of the last square when the program ends.)</p>
+<img alt="_images/five_squares.png" src="_images/five_squares.png" />
+<ol class="arabic" start="2">
 <li><p class="first">Write a program to draw this. Assume the innermost square is 20 units per side and each successive square is 20 units bigger, per side, than the one inside it.</p>
 <img alt="_images/nested_squares.png" src="_images/nested_squares.png" />
 </li>
-<li></li>
-<li></li>
-<li><p class="first">Write a non-fruitful function <code class="docutils literal notranslate"><span class="pre">draw_equi_triangle(turtle,</span> <span class="pre">size)</span></code> which calls <code class="docutils literal notranslate"><span class="pre">draw_poly</span></code> from the question above to have its turtle draw an equilateral triangle.</p>
+<li><p class="first">Write a non-fruitful function <code class="docutils literal notranslate"><span class="pre">draw_poly(t,</span> <span class="pre">sides,</span> <span class="pre">side_length)</span></code> which makes a turtle draw a regular polygon. When called with <code class="docutils literal notranslate"><span class="pre">draw_poly(tess,</span> <span class="pre">8,</span> <span class="pre">50)</span></code>, it will draw a shape like this:</p>
 </li>
-<li></li>
-<li></li>
+</ol>
+<img alt="_images/regularpolygon.png" src="_images/regularpolygon.png" />
+<ol class="arabic simple" start="4">
+<li>The two spirals in this picture differ only by the turn angle. Draw both.</li>
+</ol>
+<p><em>Note:</em> Because this program might receive a <code class="docutils literal notranslate"><span class="pre">TimeLimitError</span></code> we’ve added some code to our answer to make the turtle go faster (use its <code class="docutils literal notranslate"><span class="pre">speed</span></code> method) and to increase the time the program is allowed to run to 35 seconds. You can do the latter in your code using:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">setExecutionLimit</span><span class="p">(</span><span class="mi">35000</span><span class="p">)</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="_images/tess_spirals.png"><img alt="_images/tess_spirals.png" src="_images/tess_spirals.png" style="height: 240px;" /></a>
+<ol class="arabic simple" start="5">
+<li>Write a non-fruitful function <code class="docutils literal notranslate"><span class="pre">draw_equi_triangle(turtle,</span> <span class="pre">size)</span></code> which calls <code class="docutils literal notranslate"><span class="pre">draw_poly</span></code> from the question above to have its turtle draw an equilateral triangle.</li>
+<li>Write a fruitful function <code class="docutils literal notranslate"><span class="pre">sum_to(n)</span></code> that returns the sum of all integer numbers up to and including <code class="docutils literal notranslate"><span class="pre">n</span></code>.  So <code class="docutils literal notranslate"><span class="pre">sum_to(10)</span></code> would be <code class="docutils literal notranslate"><span class="pre">1+2+3...+10</span></code> which would return the value 55. Use the equation  (n * (n + 1)) / 2.</li>
+</ol>
+<ol class="arabic simple" start="7">
+<li>Write a non-fruitful function to draw a five pointed star, where the length of each side is 100 units.</li>
+</ol>
+<img alt="_images/star.png" src="_images/star.png" />
+<ol class="arabic" start="8">
 <li><p class="first">Extend your program above. Draw five stars, but between each, pick up the pen, move forward by 350 units, turn right by 144, put the pen down, and draw the next star. You’ll get something like this (note that you will need to move to the left before drawing your first star in order to fit everything in the window):</p>
 <img alt="_images/five_stars.png" src="_images/five_stars.png" />
 <p>What would it look like if you didn’t pick up the pen?</p>
 </li>
-<li></li>
-<li><p class="first">Write a function called <code class="docutils literal notranslate"><span class="pre">draw_sprite</span></code> that will draw a sprite. The function will need parameters for the turtle, the number of legs, and the length of the legs. Invoke the function to create a sprite  with 15 legs of length 120.</p>
+<li><p class="first">Extend the star function to draw an <code class="docutils literal notranslate"><span class="pre">n</span></code> pointed star.  (Hint: <code class="docutils literal notranslate"><span class="pre">n</span></code> must be an odd number greater or equal to 3).</p>
 </li>
-<li></li>
-<li></li>
 </ol>
-</div>
+<ol class="arabic simple" start="10">
+<li>Write a function called <code class="docutils literal notranslate"><span class="pre">draw_sprite</span></code> that will draw a sprite. The function will need parameters for the turtle, the number of legs, and the length of the legs. Invoke the function to create a sprite  with 15 legs of length 120.</li>
+</ol>
+<ol class="arabic simple" start="11">
+<li>Rewrite the function <code class="docutils literal notranslate"><span class="pre">sum_to(n)</span></code> that returns the sum of all integer numbers up to and including <code class="docutils literal notranslate"><span class="pre">n</span></code>.   This time use the accumulator pattern.</li>
+</ol>
+<ol class="arabic simple" start="12">
+<li>Write a function called <code class="docutils literal notranslate"><span class="pre">fancy_square</span></code> that will draw a square with fancy corners (sprites on the corners).  You should implement and use the <code class="docutils literal notranslate"><span class="pre">draw_sprite</span></code> function from above.</li>
+</ol>
 <div class="section" id="weekly-graded-assignment">
 <h2>Weekly Graded Assignment<a class="headerlink" href="#weekly-graded-assignment" title="Permalink to this headline">¶</a></h2>
-<div class="full-width docutils container">
 <p>Write a function <code class="docutils literal notranslate"><span class="pre">area_of_circle(r)</span></code> which returns the area of a circle of radius <code class="docutils literal notranslate"><span class="pre">r</span></code></p>
 <p>As a refresher, the area of any circle is equal to the radius squared, multiplied by pi (where pi is 3.14159….).</p>
 <p>Don’t forget to include the <code class="docutils literal notranslate"><span class="pre">math</span></code> module, where pi is defined.</p>
-</div>
 </div>
 </div>
 
