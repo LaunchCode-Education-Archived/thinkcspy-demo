@@ -8,6 +8,7 @@ Think Like A Computer Scientist (Python Edition)
    functionsThatReturnValues
    parametersAndLocalVariables
    theAccumulatorPattern
+   functionsCanCallOtherFunctions
    quizes
 
 .. raw:: html
