@@ -10,7 +10,7 @@ Think Like A Computer Scientist (Python Edition)
    theAccumulatorPattern
    functionsCanCallOtherFunctions
    exercises
-   quizes
+   exerciseSolutions
 
 .. raw:: html
     
