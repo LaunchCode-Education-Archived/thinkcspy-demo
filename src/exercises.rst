@@ -104,12 +104,12 @@ What would it look like if you didn't pick up the pen?
         <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Blank-Repl?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 Solutions
-=========
+---------
 
 Once you have finished check :doc:`here <exerciseSolutions>` to see our answers. Keep in mind that there is often more than one way to solve a problem and just because your solution may look different than ours doesn't mean yours is wrong.
 
 Weekly Graded Assignment
-========================
+------------------------
 
 Write a function ``area_of_circle(r)`` which returns the area of a circle of radius ``r``
 
