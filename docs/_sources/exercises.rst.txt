@@ -1,106 +1,36 @@
-Exercises
----------
+Chapter 5 Exercises
+===================
 
-1. Use the ``draw_square`` function we wrote in this chapter to draw the image shown below. Assume each side is 20 units.
-
+**Question 1:** Use the ``draw_square`` function we wrote in this chapter to draw the image shown below. Assume each side is 20 units.
+   
 (Hint: notice that the turtle has already moved away from the ending point of the last square when the program ends.)
 
 .. image:: _static/images/five_squares.png
+..
 
-.. activecode:: ex_5_1
-    :nocodelens:
+    .. raw:: html
 
-    import turtle
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-5-Exercise-1?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-    def draw_square(t, sz):
-        """Get turtle t to draw a square with sz side"""
+**Question 2:** Write a program to draw this. Assume the innermost square is 20 units per side and each successive square is 20 units bigger, per side, than the one inside it.
 
-        for i in range(4):
-            t.forward(sz)
-            t.left(90)
+.. image:: _static/images/nested_squares.png
+..
 
-    def main():
-        wn = turtle.Screen()
-        wn.bgcolor("lightgreen")
+    .. raw:: html
 
-        alex = turtle.Turtle()
-        alex.color("pink")
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Blank-Repl?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-        draw_square(alex,20)
-
-        wn.exitonclick()
-
-    if __name__ == "__main__":
-        main()
-
-
-.. activecode:: q1_answer
-    :nocodelens:
-
-    import turtle
-
-    def draw_square(t, sz):
-        """Make turtle t draw a square with side sz."""
-        for i in range(4):
-            t.forward(sz)
-            t.left(90)
-
-    def main():
-        wn = turtle.Screen()       # Set up the window and its attributes
-        wn.bgcolor("lightgreen")
-
-        alex = turtle.Turtle()     # create alex
-        alex.color('hotpink')
-        alex.pensize(3)
-
-        for i in range(5):
-            draw_square(alex, 20)   # Call the function to draw the square
-            alex.penup()
-            alex.forward(40)       # move alex to the starting position for the next square
-            alex.pendown()
-
-        wn.exitonclick()
-
-    if __name__ == "__main__":
-        main()
-
-2.  Write a program to draw this. Assume the innermost square is 20 units per side and each successive square is 20 units bigger, per side, than the one inside it.
-
-    .. image:: _static/images/nested_squares.png
-
-
-    .. activecode:: ex_5_2
-
-
-3. Write a non-fruitful function ``draw_poly(t, sides, side_length)`` which makes a turtle draw a regular polygon. When called with ``draw_poly(tess, 8, 50)``, it will draw a shape like this:
+**Question 3:** Write a non-fruitful function ``draw_poly(t, sides, side_length)`` which makes a turtle draw a regular polygon. When called with ``draw_poly(tess, 8, 50)``, it will draw a shape like this:
 
 .. image:: _static/images/regularpolygon.png
+..
 
-.. activecode:: ex_5_3
+    .. raw:: html
 
-.. activecode:: q3_answer
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Blank-Repl?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-    import turtle
-
-    def draw_poly(t, sides, side_length):
-        for i in range(sides):
-            t.forward(side_length)
-            t.left(360/sides)
-
-    def main():
-        wn = turtle.Screen()       # Set up the window and its attributes
-        wn.bgcolor("lightgreen")
-
-        tess = turtle.Turtle()
-        tess.color('hotpink')
-        tess.pensize(3)
-
-        draw_poly(tess, 8, 50)
-
-    if __name__ == "__main__":
-        main()
-
-4. The two spirals in this picture differ only by the turn angle. Draw both.
+**Question 4:** The two spirals in this picture differ only by the turn angle. Draw both.
 
 *Note:* Because this program might receive a ``TimeLimitError`` we've added some code to our answer to make the turtle go faster (use its ``speed`` method) and to increase the time the program is allowed to run to 35 seconds. You can do the latter in your code using:
 
@@ -111,203 +41,72 @@ Exercises
 
 .. image:: _static/images/tess_spirals.png
     :height: 240
+..
 
-.. activecode:: ex_5_5
+    .. raw:: html
 
-.. activecode:: q5_answer
-    :nocodelens:
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Blank-Repl?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-    import turtle
-    import sys
+**Question 5:** Write a non-fruitful function ``draw_equi_triangle(turtle, size)`` which calls ``draw_poly`` from the question above to have its turtle draw an equilateral triangle.
 
-    sys.setExecutionLimit(35000)
+    .. raw:: html
 
-    def draw_spiral(t, angle):
-        ''' takes a turtle, t, and an angle in degrees '''
-        length = 1
-        for i in range(84):
-            t.forward(length)
-            t.right(angle)
-            length = length + 2
-
-    def main():
-        wn = turtle.Screen()       # Set up the window and its attributes
-        wn.bgcolor("lightgreen")
-
-        guido = turtle.Turtle()    # create guido
-        guido.color('blue')
-        guido.speed(10)
-
-        ## draw the first spiral ##
-        # position guido
-        guido.penup()
-        guido.backward(110)
-        guido.pendown()
-
-        # draw the spiral using a 90 degree turn angle
-        draw_spiral(guido, 90)
-
-        ## draw the second spiral ##
-        # position guido
-        guido.penup()
-        guido.home()
-        guido.forward(90)
-        guido.pendown()
-
-        draw_spiral(guido, 89)
-
-    if __name__ == "__main__":
-        main()
-
-5.  Write a non-fruitful function ``draw_equi_triangle(turtle, size)`` which calls ``draw_poly`` from the question above to have its turtle draw an equilateral triangle.
-
-    .. activecode:: ex_5_6
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Blank-Repl?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
 
-6. Write a fruitful function ``sum_to(n)`` that returns the sum of all integer numbers up to and including ``n``.  So ``sum_to(10)`` would be ``1+2+3...+10`` which would return the value 55. Use the equation  (n * (n + 1)) / 2.
+**Question 6:** Write a fruitful function ``sum_to(n)`` that returns the sum of all integer numbers up to and including ``n``.  So ``sum_to(10)`` would be ``1+2+3...+10`` which would return the value 55. Use the equation  (n * (n + 1)) / 2.
 
-.. activecode:: ex_5_7
+    .. raw:: html
 
-    def sum_to(n):
-        # your code here
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-5-Exercise-6?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-.. activecode:: q7_answer
-
-    def sum_to(n):
-        result = (n * (n + 1)) / 2
-        return result
-
-    def main():
-        # Now lets see how well this works
-        t = sum_to(0)
-        print("The sum from 1 to 0 is",t)
-        t = sum_to(10)
-        print("The sum from 1 to 10 is",t)
-        t = sum_to(5)
-        print("The sum from 1 to 5 is",t)
-
-    if __name__ == "__main__":
-        main()
-
-7. Write a non-fruitful function to draw a five pointed star, where the length of each side is 100 units.
+**Question 7:** Write a non-fruitful function to draw a five pointed star, where the length of each side is 100 units.
 
 .. image:: _static/images/star.png
+.. 
 
-.. activecode:: ex_5_9
+    .. raw:: html
 
-.. activecode:: q9_answer
-    :nocodelens:
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Blank-Repl?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-    import turtle
+**Question 8:** Extend your program above. Draw five stars, but between each, pick up the pen, move forward by 350 units, turn right by 144, put the pen down, and draw the next star. You'll get something like this (note that you will need to move to the left before drawing your first star in order to fit everything in the window):
 
-    def draw_star(t):
-        for i in range(5):
-            t.forward(100)
-            t.left(216)
+.. image:: _static/images/five_stars.png
 
-    def main():
-        wolfram = turtle.Turtle()
-        draw_star(wolfram)
+What would it look like if you didn't pick up the pen?
 
-    if __name__ == "__main__":
-        main()
+    .. raw:: html
 
-8.  Extend your program above. Draw five stars, but between each, pick up the pen, move forward by 350 units, turn right by 144, put the pen down, and draw the next star. You'll get something like this (note that you will need to move to the left before drawing your first star in order to fit everything in the window):
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Blank-Repl?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-    .. image:: _static/images/five_stars.png
+**Question 9:** Extend the star function to draw an ``n`` pointed star.  (Hint: ``n`` must be an odd number greater or equal to 3).
 
-    What would it look like if you didn't pick up the pen?
+    .. raw:: html
 
-    .. activecode:: ex_5_10
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Blank-Repl?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
+**Question 10:** Write a function called ``draw_sprite`` that will draw a sprite. The function will need parameters for the turtle, the number of legs, and the length of the legs. Invoke the function to create a sprite  with 15 legs of length 120.
 
-9. Extend the star function to draw an ``n`` pointed star.  (Hint: ``n`` must be an odd number greater or equal to 3).
+    .. raw:: html
 
-.. activecode:: ex_5_11
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Blank-Repl?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-.. activecode:: q11_answer
-    :nocodelens:
+**Question 11:** Rewrite the function ``sum_to(n)`` that returns the sum of all integer numbers up to and including ``n``.   This time use the accumulator pattern.
 
-    import turtle
+    .. raw:: html
 
-    def draw_star(t, n):
-        for i in range(n):
-            t.forward(100)
-            t.left(180 - 180/n)
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-5-Exercise-6?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-    def main():
-        sam = turtle.Turtle()
-        draw_star(sam, 7)
+**Question 12:** Write a function called ``fancy_square`` that will draw a square with fancy corners (sprites on the corners).  You should implement and use the ``draw_sprite`` function from above.
 
-    if __name__ == "__main__":
-        main()
+    .. raw:: html
 
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Blank-Repl?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
-10.  Write a function called ``draw_sprite`` that will draw a sprite. The function will need parameters for the turtle, the number of legs, and the length of the legs. Invoke the function to create a sprite  with 15 legs of length 120.
+Solutions
+=========
 
-.. activecode:: ex_5_12
-
-11. Rewrite the function ``sum_to(n)`` that returns the sum of all integer numbers up to and including ``n``.   This time use the accumulator pattern.
-
-.. activecode:: ex_5_13
-
-    def sum_to(n):
-        # your code here
-
-.. activecode:: q13_answer
-
-    def sum_to(n):
-        sum = 0
-        for i in range(1,n+1):
-            sum = sum + i
-        return sum
-
-    def main():
-        # Now lets see how well this works
-        t = sum_to(0)
-        print("The sum from 1 to 0 is",t)
-        t = sum_to(10)
-        print("The sum from 1 to 10 is",t)
-        t = sum_to(5)
-        print("The sum from 1 to 5 is",t)
-
-    if __name__ == "__main__":
-        main()
-
-12. Write a function called ``fancy_square`` that will draw a square with fancy corners (sprites on the corners).  You should implement and use the ``draw_sprite`` function from above.
-
-.. activecode:: ex_5_14
-
-.. activecode:: q14_answer
-    :nocodelens:
-
-    import turtle
-
-    def draw_sprite(t, legs, leg_length):
-        angle = 360/legs
-        for i in range(legs):
-            t.forward(leg_length)
-            t.backward(leg_length)
-            t.left(angle)
-
-    def fancy_square(t, sz, lgs, lgl):
-        for i in range(4):
-            t.forward(sz)
-            draw_sprite(t, lgs, lgl)
-            t.left(90)
-
-    def main():
-        wn = turtle.Screen()
-        wn.bgcolor("lightgreen")
-
-        alex = turtle.Turtle()
-        fancy_square(alex, 100, 10, 15)
-
-        wn.exitonclick()
-
-    if __name__ == "__main__":
-        main()
-
+Once you have finished check :doc:`here <exerciseSolutions>` to see our answers. Keep in mind that there is often more than one way to solve a problem and just because your solution may look different than ours doesn't mean yours is wrong.
 
 Weekly Graded Assignment
 ========================
@@ -318,7 +117,7 @@ As a refresher, the area of any circle is equal to the radius squared, multiplie
 
 Don't forget to include the ``math`` module, where pi is defined.
 
-.. activecode:: ex_5_8
+.. sourcecode:: python
 
     # TODO: use def to define a function called area_of_circle which takes an argument called r
 
@@ -343,3 +142,4 @@ Don't forget to include the ``math`` module, where pi is defined.
     testEqual(t, 25 * math.pi)
     t = area_of_circle(2.3)
     testEqual(t, 16.61902513749)
+
