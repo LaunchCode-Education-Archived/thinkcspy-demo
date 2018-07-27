@@ -64,16 +64,6 @@ Notice something important here. The name of the variable we pass as an argument
 
 As you step through the example in codelens notice that the **return** statement not only causes the function to return a value, but it also returns the flow of control back to the place in the program where the function call was made.
 
-(note: the following examples were implemented using codelens in the original document. Some of the paragraphs here and on other pages directly reference parts of codelens and will need to be rewritten. I have not yet found a way to implement codelens or a similar debugger in this version of Sphinx.)
-
-(update: repl.it comes with a built in debugger but it's not very good. For starters any use of the input() function will crash the debugger during runtime.)
-
-(update: It seems codelens can be embedded in the same way as a repl.it. When embedded the entire body of the code is included as part of the url, since you can't save codelens code like you can in repl.it. For the moment I will add both a repl.it and embedded codelens and decide which one is better later.)
-
-    .. raw:: html
-
-        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-52d?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
-
     .. raw:: html
 
         <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def%20square%28x%29%3A%0A%20%20%20%20y%20%3D%20x%20*%20x%0A%20%20%20%20return%20y%0A%20%20%20%20%0Anum%20%3D%2010%0Aresult%20%3D%20square%28num%29%0Aprint%28%22The%20result%20of%20%22,%20num,%20%22%20squared%20is%20%22,%20result%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
@@ -86,10 +76,6 @@ When you first start running this codelens you will notice that there is only a 
 When you click on the forward button, notice that the red arrow moves to line 5, skipping lines 2 and 3 of the function (and the light green arrow has now appeared on line 1).  Why is this? The answer is that function definition is not the same as function execution. Lines 2 and 3 will not be executed until the function is called on line 6. Line 1 defines the function and the name ``square`` is added to the global variables, but that is all the ``def`` does at that point. The body of the function will be executed later. Continue to click the forward button to see how the flow of control moves from the call, back up to the body of the function, and then finally back to line 7, after the function has returned its value and the value has been assigned to ``result``.
 
 Finally, there is one more aspect of function return values that should be noted. All Python functions return the value ``None`` unless there is an explicit return statement with a value other than ``None``. Consider the following common mistake made by beginning Python programmers. As you step through this example, pay very close attention to the return value in the local variables listing. Then look at what is printed when the function returns.
-
-    .. raw:: html
-
-        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-52e?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
     .. raw:: html
 

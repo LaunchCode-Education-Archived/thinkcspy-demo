@@ -14,9 +14,6 @@ An assignment statement in a function creates a **local variable** for the varia
 
     .. raw:: html
 
-        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-53a?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
-
-    .. raw:: html
         <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def%20square%28x%29%3A%0A%20%20%20%20y%20%3D%20x%20*%20x%0A%20%20%20%20return%20y%0A%0Az%20%3D%20square%2810%29%0Aprint%28y%29%0A&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 If you press the "last >>" button you will see an error message. When we try to use ``y`` on line 6 (outside the function) Python looks for a global variable named ``y`` but does not find one. This results in the error: ``NameError: 'y' is not defined.``
@@ -39,10 +36,6 @@ There is another important aspect of local versus global variables: *assignment 
 
     .. raw:: html
 
-        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-53c?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
-
-    .. raw:: html
-
         <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def%20power_of%28x,%20p%29%3A%0A%20%20%20%20power%20%3D%20p%20%20%20%23%20Another%20dumb%20mistake%0A%20%20%20%20y%20%3D%20x%20**%20power%0A%20%20%20%20return%20y%0A%0Apower%20%3D%203%0Aresult%20%3D%20power_of%2810,%202%29%0Aprint%28result%29%0A&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
 
 Now step through the code. What do you notice about the values of variable ``power`` in the local scope compared to the variable ``power`` in the global scope?
@@ -50,10 +43,6 @@ Now step through the code. What do you notice about the values of variable ``pow
 The value of ``power`` in the local scope was different than the global scope. That is because in this example ``power`` was used on the left hand side of the assignment statement ``power = p``.  When a variable name is used on the left hand side of an assignment statement Python creates a local variable. When a local variable has the same name as a global variable we say that the local shadows the global. A **shadow** means that the global variable cannot be accessed by Python because the local variable will be found first. This is another good reason not to use global variables. As you can see, it makes your code confusing and difficult to understand.
 
 To cement all of these ideas even further let's look at one final example. Inside the ``square`` function we are going to make an assignment to the parameter ``x``  There's no good reason to do this other than to emphasize the fact that the parameter ``x`` is a local variable. If you step through the example in codelens you will see that although ``x`` is 0 in the local variable for ``square``, the ``x`` in the global scope remains 2. This is confusing to many beginning programmers who think that an assignment to a formal parameter will cause a change to the value of the variable that was used as the actual parameter (the argument), especially when the two share the same name. But this example demonstrates that Python clearly does not operate that way.
-
-    .. raw:: html
-
-        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-53d?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
 
     .. raw:: html
 
