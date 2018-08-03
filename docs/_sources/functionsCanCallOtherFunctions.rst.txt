@@ -1,0 +1,75 @@
+..  Copyright (C)  Brad Miller, David Ranum, Jeffrey Elkner, Peter Wentworth, Allen B. Downey, Chris
+    Meyers, and Dario Mitchell. Permission is granted to copy, distribute
+    and/or modify this document under the terms of the GNU Free Documentation
+    License, Version 1.3 or any later version published by the Free Software
+    Foundation; with Invariant Sections being Forward, Prefaces, and
+    Contributor List, no Front-Cover Texts, and no Back-Cover Texts. A copy of
+    the license is included in the section entitled "GNU Free Documentation
+    License".
+
+5.5 Functions Can Call Other Functions
+======================================
+
+It is important to understand that each of the functions we write can be used and called from other functions we write. This is one of the most important ways that computer scientists take a large problem and break it down into a group of smaller problems. This process of breaking a problem into smaller subproblems is called **functional decomposition**.
+
+Here's a simple example of functional decomposition using two functions. The first function called ``square`` simply computes the square of a given number. The second function called ``sum_of_squares`` makes use of ``square`` to compute the sum of three numbers that have been squared.
+
+    .. raw:: html
+
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-55a?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+Even though this is a simple demonstration, this example illustrates a couple of important Python concepts, like code reusability, along with using arguments. You can see why functions are useful by looking at how we are able to do the same thing (sum the squares) in 2 different instances to get 2 different results, but we only have to write the code that will perform the calculations once. Because we have that code in functions, we can reuse it by calling the functions with different arguments.
+
+Now let's change this example slightly to demonstrate scope by using local and global variables that have the same name.
+
+    .. raw:: html
+
+        <iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def%20square%28x%29%3A%0A%20%20%20%20y%20%3D%20x%20*%20x%0A%20%20%20%20return%20y%0A%20%20%20%20%0Adef%20sum_of_squares%28x,%20y,%20z%29%3A%0A%20%20%20%20a%20%3D%20square%28x%29%0A%20%20%20%20b%20%3D%20square%28y%29%0A%20%20%20%20c%20%3D%20square%28z%29%0A%20%20%20%20%0A%20%20%20%20return%20a%20%2B%20b%20%2B%20c%0A%20%20%20%20%0Aa%20%3D%20-5%0Ab%20%3D%202%0Ac%20%3D%2010%0Aresult%20%3D%20sum_of_squares%28a,%20b,%20c%29%0Aprint%28result%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
+Note that when you step through this example, codelens bolds line 1 and line 5 as the functions are defined. The body of ``square`` is not executed until it is called from the ``sum_of_squares`` function for the first time on line 6. Also notice that when ``square`` is called there are two groups of local variables, one for ``square`` and one for ``sum_of_squares``. As you step through you will notice that ``x`` and ``y`` are local variables in both functions and may even have different values. This illustrates that even though they are named the same, they are distinct. And you can see the same thing is true about the variables ``a``, ``b``, and ``c`` --- the ones that are in the function ``sum_of_squares`` are different from the ones at the bottom of the program, outside the function definition.
+
+Now we will look at another example that uses two functions. This example illustrates an important computer science problem solving technique called **generalization**. Assume we want to write a function to draw a rectangle. The generalization step is to realize that a square is just a special kind of rectangle. Therefore, our approach to solving the problem of how to draw a rectangle can borrow from our solution to how to draw a square.
+
+To draw a rectangle we need to be able to call a function with different arguments for width and height. Unlike the case of the square, we cannot repeat the same argument four times, because the four sides are not equal in a rectangle that is not a square. However, it is the case that drawing the bottom and right sides follows the same sequence as drawing the top and left sides. So we eventually come up with this rather nice code that can draw a rectangle.
+
+
+.. code-block:: python
+
+    def draw_rectangle(t, w, h):
+        """Get turtle t to draw a rectangle of width w and height h."""
+        for i in range(2):
+            t.forward(w)
+            t.left(90)
+            t.forward(h)
+            t.left(90)
+
+The parameter names are deliberately chosen as single letters to ensure they're not misunderstood. In real programs, once you've had more experience, we will insist on better variable names than this. The point is that the program doesn't "understand" that you're drawing a rectangle or that the parameters represent the width and the height. Concepts like rectangle, width, and height are meaningful for humans. They are not concepts that the program or the computer understands.
+
+*Thinking like a computer scientist* involves looking for patterns and relationships. In the code above, we've done that to some extent. We did not just draw four sides. Instead, we spotted that we could draw the rectangle as two halves and used a loop to repeat that pattern twice.
+
+But now we might recall how a square relates to a rectangle; it is just a special kind of rectangle. A square simply uses the same value for both the height and the width. We already have a function that draws a rectangle, so we can use that to draw our square by calling it from our ``draw_square`` function.
+
+.. code-block:: python
+
+    def draw_square(t, sz):        # a new version of draw_square
+        draw_rectangle(t, sz, sz)  # pass in sz twice, for height AND width
+
+Here is the entire example with the necessary set up code.
+
+    .. raw:: html
+
+        <iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-55b?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
+
+Some points worth noting here:
+
+* Functions can call other functions.
+* Rewriting ``draw_square`` like this captures the relationship that we've spotted.
+* A caller of this function might say ``draw_square(tess, 50)``.  The parameters of this function, ``t`` and ``sz``, are assigned the values of the ``tess`` object, and the integer 50, respectively.
+* In the body of the function, ``t`` and ``sz`` are just like any other variable.
+* When the call is made to ``draw_rectangle``, the values in variables ``t`` and ``sz`` are fetched first, then the call happens. So as we enter the top of the function ``draw_rectangle``, its variable ``t`` is assigned the ``tess`` object, and ``w`` and ``h`` --- in that function --- are both given the value 50.
+
+So far, it may not be clear why it is worth the trouble to create all of these new functions. Actually, there are a lot of reasons, but this example demonstrates three:
+
+#. Creating a new function gives you an opportunity to name a group of statements. Functions can simplify a program by hiding a complex computation behind a single command. The function (including its name) can capture your mental chunking, or **abstraction**, of the problem.
+#. Creating a new function can make a program smaller by eliminating repetitive code.
+#. Sometimes you can write functions that allow you to solve a specific problem using a more general solution.

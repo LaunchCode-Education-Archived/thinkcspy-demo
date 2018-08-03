@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>5.2 Functions That Return Values &#8212; Think Like A Computer Scientist (Python Edition)  documentation</title>
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/launchcode.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5.3 Parameters and Local Variables" href="parametersAndLocalVariables.html" />
+    <link rel="prev" title="5.1 Functions" href="functions.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head><body>
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html"><span><img src="_static/lc-logo.svg"></span>
+          ThinkCsPy</a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Pages <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="functions.html">5.1 Functions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5.2 Functions That Return Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parametersAndLocalVariables.html">5.3 Parameters and Local Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theAccumulatorPattern.html">5.4 The Accumulator Pattern</a></li>
+<li class="toctree-l1"><a class="reference internal" href="functionsCanCallOtherFunctions.html">5.5 Functions Can Call Other Functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exercises.html">Chapter 5 Exercises</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="exercises.html#solutions">Solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exercises.html#weekly-graded-assignment">Weekly Graded Assignment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="exerciseSolutions.html">Chapter 5 Exercise Solutions</a></li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
+<li><a class="reference internal" href="#">5.2 Functions That Return Values</a></li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="functions-that-return-values">
+<h1>5.2 Functions That Return Values<a class="headerlink" href="#functions-that-return-values" title="Permalink to this headline">¶</a></h1>
+<p>Most functions require arguments — values that control how the function does its job. For example, if you want to find the absolute value of a number, you have to indicate what the number is. Python has a built-in function for computing the absolute value:</p>
+<blockquote>
+<div><iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-52a?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe></div></blockquote>
+<p>In this example, the arguments to the <code class="docutils literal notranslate"><span class="pre">abs</span></code> function are 5 and -5.</p>
+<p>Some functions take more than one argument. For example the math module contains a function called <code class="docutils literal notranslate"><span class="pre">pow</span></code> which takes two arguments, the base and the exponent.</p>
+<blockquote>
+<div><iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-52b?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe></div></blockquote>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Of course, we have already seen that raising a base to an exponent can be done with the ** operator.</p>
+</div>
+<p>Another built-in function that takes more than one argument is <code class="docutils literal notranslate"><span class="pre">max</span></code>.</p>
+<blockquote>
+<div><iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-52c?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe></div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">max</span></code> can be sent any number of arguments, separated by commas, and will return the maximum value sent. The arguments can be either simple values or expressions. In the last example, 503 is returned, since it is larger than 33, 125, and 1. Note that <code class="docutils literal notranslate"><span class="pre">max</span></code> also works on lists of values.</p>
+<p>Furthermore, functions like <code class="docutils literal notranslate"><span class="pre">range</span></code>, <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">abs</span></code> all return values that can be used to build more complex expressions.</p>
+<p>So an important difference between these functions and one like <code class="docutils literal notranslate"><span class="pre">draw_square</span></code> is that <code class="docutils literal notranslate"><span class="pre">draw_square</span></code> was not executed because we wanted it to return a value — on the contrary, we called <code class="docutils literal notranslate"><span class="pre">draw_square</span></code> because we wanted it to execute a sequence of steps that caused the turtle to draw a specific shape.</p>
+<p>Functions that return values are sometimes called <strong>fruitful functions</strong>. In many other languages, a chunk that <em>doesn’t</em> return a value is called a <strong>procedure</strong>, but we will stick here with the Python way of simply calling it a function, or if we want to stress its lack of a return value, a <em>non-fruitful</em> function.</p>
+<p>As you’ve seen, fruitful functions still allow the user to provide information (arguments). They just additionally return data from the function, which is their difference from non-fruitful functions.</p>
+<img alt="_images/blackboxfun.png" src="_images/blackboxfun.png" />
+<p>How do we write our own fruitful function? Let’s start by creating a very simple mathematical function that we will call <code class="docutils literal notranslate"><span class="pre">square</span></code>.  The <code class="docutils literal notranslate"><span class="pre">square</span></code> function will take one number as a parameter and return the result of squaring that number. Here is the black-box diagram with the Python code following.</p>
+<img alt="_images/squarefun.png" src="_images/squarefun.png" />
+<blockquote>
+<div><iframe height="400px" width="100%" src="https://repl.it/@launchcode/Demo-Ch-52d?lite=true" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe></div></blockquote>
+<p>The <strong>return</strong> statement is followed by an expression which is evaluated. Its result is returned to the caller as the “fruit” of calling this function. Because the return statement can contain any Python expression we could have avoided creating the <strong>temporary variable</strong> <code class="docutils literal notranslate"><span class="pre">y</span></code> and simply used <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">x</span> <span class="pre">*</span> <span class="pre">x</span></code>. Try modifying the square function above to see that this works just the same.</p>
+<p>On the other hand, sometimes using <strong>temporary variables</strong> like <code class="docutils literal notranslate"><span class="pre">y</span></code> in the program above makes debugging easier. These temporary variables are referred to as <strong>local variables</strong>.</p>
+<p>Notice something important here. The name of the variable we pass as an argument, <code class="docutils literal notranslate"><span class="pre">num</span></code>, has nothing to do with the name of the formal parameter, <code class="docutils literal notranslate"><span class="pre">x</span></code>.  It is as if <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">num</span></code> is executed when <code class="docutils literal notranslate"><span class="pre">square</span></code> is called. It doesn’t matter what the value was named in the caller. Inside the <code class="docutils literal notranslate"><span class="pre">square</span></code> function, it’s name is <code class="docutils literal notranslate"><span class="pre">x</span></code>.  You can see this very clearly in codelens, where the global variables and the local variables for the <code class="docutils literal notranslate"><span class="pre">square</span></code> function are in separate boxes.</p>
+<p>As you step through the example in codelens notice that the <strong>return</strong> statement not only causes the function to return a value, but it also returns the flow of control back to the place in the program where the function call was made.</p>
+<blockquote>
+<div><iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def%20square%28x%29%3A%0A%20%20%20%20y%20%3D%20x%20*%20x%0A%20%20%20%20return%20y%0A%20%20%20%20%0Anum%20%3D%2010%0Aresult%20%3D%20square%28num%29%0Aprint%28%22The%20result%20of%20%22,%20num,%20%22%20squared%20is%20%22,%20result%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe></div></blockquote>
+<p>Another important thing to notice as you step through this codelens is the movement of the red and green arrows. Codelens uses these arrows to show you where it is currently executing. Recall that the red arrow always points to the next line of code that will be executed. The light green arrow points to the line that was just executed in the last step.</p>
+<p>When you first start running this codelens you will notice that there is only a red arrow and it points to line 1. This is because line 1 is the next line to be executed and since it is the first line, there is no previously executed line of code.</p>
+<p>When you click on the forward button, notice that the red arrow moves to line 5, skipping lines 2 and 3 of the function (and the light green arrow has now appeared on line 1).  Why is this? The answer is that function definition is not the same as function execution. Lines 2 and 3 will not be executed until the function is called on line 6. Line 1 defines the function and the name <code class="docutils literal notranslate"><span class="pre">square</span></code> is added to the global variables, but that is all the <code class="docutils literal notranslate"><span class="pre">def</span></code> does at that point. The body of the function will be executed later. Continue to click the forward button to see how the flow of control moves from the call, back up to the body of the function, and then finally back to line 7, after the function has returned its value and the value has been assigned to <code class="docutils literal notranslate"><span class="pre">result</span></code>.</p>
+<p>Finally, there is one more aspect of function return values that should be noted. All Python functions return the value <code class="docutils literal notranslate"><span class="pre">None</span></code> unless there is an explicit return statement with a value other than <code class="docutils literal notranslate"><span class="pre">None</span></code>. Consider the following common mistake made by beginning Python programmers. As you step through this example, pay very close attention to the return value in the local variables listing. Then look at what is printed when the function returns.</p>
+<blockquote>
+<div><iframe width="800" height="500" frameborder="0" src="http://pythontutor.com/iframe-embed.html#code=def%20square%28x%29%3A%0A%20%20%20%20y%20%3D%20x%20*%20x%0A%20%20%20%20print%28y%29%20%20%20%23%20Bad!%20should%20use%20return%20instead!%0A%20%20%20%20%0Anum%20%3D%2010%0Aresult%20%3D%20square%28num%29%0Aprint%28%22The%20result%20of%20%22,%20num,%20%22%20squared%20is%20%22,%20result%29%0A&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=3&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe></div></blockquote>
+<p>The problem with this function is that even though it prints the value of the square, that value will not be returned to the place where the call was done. Since line 6 uses the return value as the right hand side of an assignment statement, the evaluation of the function will be <code class="docutils literal notranslate"><span class="pre">None</span></code>.  In this case, <code class="docutils literal notranslate"><span class="pre">result</span></code> will refer to that value after the assignment statement and therefore the result printed in line 7 is incorrect. Typically, functions will return values that can be printed or processed in some other way by the caller.</p>
+<p><strong>Check your understanding</strong></p>
+<p>Check Canvas for review quiz</p>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2018, LaunchCode.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
